@@ -1,0 +1,211 @@
+/* ===== 互动影游档案馆 - 主题样式 ===== */
+:root {
+  --bg: #0d0a12;
+  --bg2: #120e1e;
+  --card: #1a1528;
+  --card-hover: #231d3a;
+  --accent: #e8a0bf;
+  --accent2: #b8a0e8;
+  --accent3: #f0c0d8;
+  --text: #f0e8f8;
+  --text2: #b8aec8;
+  --text3: #887e98;
+  --shadow: rgba(200, 140, 220, 0.12);
+  --radius: 14px;
+  --max-w: 1100px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.7;
+}
+a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+a:hover { opacity: 0.8; }
+
+/* ===== 导航栏 ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  padding: 16px 24px;
+  background: rgba(13,10,18,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,140,220,0.06);
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .logo {
+  font-size: 1.15em; font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+nav a { color: var(--text2); margin-left: 20px; font-size: 0.9em; transition: color 0.2s; }
+nav a:hover { color: var(--accent); opacity: 1; }
+
+/* ===== 英雄区 ===== */
+.hero {
+  padding: 120px 20px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(232,160,191,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(184,160,232,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-size: 3em; font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
+  position: relative;
+}
+.hero p {
+  color: var(--text2); margin-top: 12px; font-size: 1.1em;
+  letter-spacing: 1px; position: relative;
+}
+.hero .subtitle {
+  color: var(--text3); margin-top: 6px; font-size: 0.85em;
+  position: relative;
+}
+
+/* ===== 游戏网格 ===== */
+.section-title {
+  max-width: var(--max-w); margin: 40px auto 20px; padding: 0 20px;
+  font-size: 1.3em; font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(200,140,220,0.3), transparent);
+}
+.games-grid {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 20px 40px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.game-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(200,140,220,0.06);
+  position: relative; overflow: hidden;
+}
+.game-card:hover {
+  background: var(--card-hover);
+  transform: translateY(-6px);
+  border-color: rgba(200,140,220,0.15);
+  box-shadow: 0 12px 40px var(--shadow);
+}
+.game-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0; transition: opacity 0.35s;
+}
+.game-card:hover::before { opacity: 1; }
+.game-card .icon { font-size: 2.8em; margin-bottom: 14px; }
+.game-card h3 { font-size: 1.2em; margin-bottom: 4px; line-height: 1.4; }
+.game-card .desc { color: var(--text3); font-size: 0.85em; margin-bottom: 12px; }
+.game-card .stats {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.game-card .stats span {
+  padding: 2px 8px; border-radius: 4px;
+  background: rgba(200,140,220,0.08);
+  color: var(--text2); font-size: 0.75em;
+}
+.game-card .enter {
+  position: absolute; bottom: 20px; right: 20px;
+  font-size: 1.4em; opacity: 0; transition: opacity 0.3s;
+}
+.game-card:hover .enter { opacity: 0.5; }
+
+/* ===== 游戏详情页 ===== */
+.game-hero {
+  padding: 100px 20px 40px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(26,21,40,0.6), transparent);
+}
+.game-hero .icon { font-size: 3.5em; }
+.game-hero h1 { font-size: 2em; margin-top: 10px; }
+.game-hero .meta { color: var(--text3); font-size: 0.9em; margin-top: 6px; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px 40px; }
+
+.res-section { margin-top: 32px; }
+.res-section h2 {
+  font-size: 1.1em; font-weight: 600;
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(200,140,220,0.08);
+}
+.res-section h2 .count {
+  color: var(--text3); font-size: 0.85em; font-weight: 400;
+}
+
+.file-list {
+  display: grid; gap: 8px;
+}
+.file-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+.file-item:hover { background: rgba(255,255,255,0.05); }
+.file-item .name {
+  flex: 1; font-size: 0.9em; word-break: break-all; margin-right: 12px;
+}
+.file-item .info {
+  color: var(--text3); font-size: 0.8em; white-space: nowrap; margin-right: 12px;
+}
+.file-item .dl-btn {
+  padding: 5px 14px; border-radius: 6px;
+  background: var(--accent); color: #1a1528;
+  font-size: 0.8em; white-space: nowrap;
+  font-weight: 600;
+}
+
+/* ===== 页面 ===== */
+.page-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  color: var(--text2); font-size: 0.9em; margin-bottom: 20px;
+  transition: color 0.2s;
+}
+.page-link:hover { color: var(--accent); opacity: 1; }
+
+/* ===== 页脚 ===== */
+footer {
+  text-align: center; padding: 40px 20px;
+  color: var(--text3); font-size: 0.85em;
+  border-top: 1px solid rgba(200,140,220,0.04);
+  margin-top: 40px;
+}
+footer a { color: var(--text2); }
+
+/* ===== 粒子 canvas ===== */
+#particles {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+}
+
+/* ===== 滚动条 ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(200,140,220,0.2); border-radius: 3px; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.8em; }
+  .games-grid { grid-template-columns: 1fr; }
+  nav .logo { font-size: 1em; }
+  nav a { margin-left: 12px; font-size: 0.8em; }
+}
